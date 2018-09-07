@@ -1,0 +1,9 @@
+#!/bin/bash -exu
+
+docker build . -t finance/notebook
+
+summon -p keyring.py docker run --rm -it \
+  -p "8888:8888" \
+  -v "$PWD/work:/home/jovyan/work" \
+  --env-file @SUMMONENVFILE \
+  finance/notebook
