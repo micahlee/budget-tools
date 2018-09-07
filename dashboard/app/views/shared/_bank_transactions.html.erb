@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Flow</th>
+      <th>Amount</th>
+      <th>Memo</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% transactions.each do |t| %>
+    <tr>
+      <td><%=t.date.strftime("%m/%d/%Y")%></td>
+      <td>
+        <div>From: <%=t.from_acct%></div>
+        <div>To: <%=t.to_acct%></div>
+      </td>
+      <td class="text-right"><%=number_to_currency(t.amount_dollars)%></td>
+      <td><%=t.memo%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

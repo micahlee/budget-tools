@@ -1,0 +1,5 @@
+<h1>Bank Transactions</h1>
+<%= button_to "Sync Transactions", action: "sync" %>
+
+
+<%= render partial: "shared/bank_transactions", locals: { transactions: @transactions} %>

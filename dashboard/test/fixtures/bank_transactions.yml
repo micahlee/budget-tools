@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-09-06 01:01:20
+  to_acct: MyString
+  from_acct: MyString
+  amount: 1
+  memo: MyText
+
+two:
+  date: 2018-09-06 01:01:20
+  to_acct: MyString
+  from_acct: MyString
+  amount: 1
+  memo: MyText

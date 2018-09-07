@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+summon -p keyring.py \
+  docker-compose up -d
+
+docker-compose exec web bash

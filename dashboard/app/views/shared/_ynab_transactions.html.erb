@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Payee</th>
+      <th>Amount</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% transactions.each do |t| %>
+    <tr>
+      <td><%=t.date.strftime("%m/%d/%Y")%></td>
+      <td>
+        <%=t.payee%>
+      </td>
+      <td class="text-right"><%=number_to_currency(t.amount/1000.0)%></td>
+      <td><%=t.category%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

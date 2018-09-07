@@ -1,0 +1,21 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Budget Dashboard</h1>
+      <%= button_to "Sync Bank Transactions", { controller: "bank_transactions", action: "sync" }, { class: 'btn btn-sm btn-default' }%>
+      <%= button_to "Sync YNAB Transactions", { controller: "ynab", action: "sync"}, { class: 'btn btn-sm btn-default' } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Ally Transfers</h3>
+      <%= render partial: "shared/bank_transactions", locals: { transactions: @bank_transfers} %>
+    </div>
+    <div class="col-md-6">
+      <h3>Bill Pay Transfers</h3>
+      <%= render partial: "shared/ynab_transactions", locals: { transactions: @bill_pay_transactions} %>
+    </div>
+  </div>
+</div>
