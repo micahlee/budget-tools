@@ -9,8 +9,19 @@ class BankTransactionsController < ApplicationController
 
   def sync
     already_exist_tries = 3
+
+    event_handler = lambda do |msg|
+      p "DBG: ally event: #{msg}"
+
+      ProgressChannel.broadcast_to(
+        "progress_ally",
+        message: msg
+      )
+    end
+
     interface = Ally::Interface.new
-    interface.transactions.each do |transaction|
+    interface.transactions(event_handler).each do |transaction|
+      p "DBG: transaction=#{transaction}"
       already_exists = BankTransaction.where(
         date: transaction.date,
         to_acct: transaction.to_acct,
@@ -27,5 +38,7 @@ class BankTransactionsController < ApplicationController
 
       break if already_exist_tries == 0
     end
+
+    event_handler.call "Done!";
   end
 end
